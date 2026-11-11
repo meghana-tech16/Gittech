@@ -1,0 +1,1569 @@
+
+
+===== PAGE 1 =====
+
+| OBJECT ORIENTED PROGRAMMING WITH JAVA BCS306A
+MODULE -2 F]
+Introducing Classes: Class Fundamentals, Declaring Objects, Assigning Object Reference
+Variables, Introducing Methods, Constructors, The this Keyword, Garbage Collection, The finalize)
+Method, A Stack Class, A Closer Look at Methods and Classes: Overloading Methods, Using Objects
+as Parameters, A Closer Look at Argument Passing, Returning Objects, Recursion, Introducing
+Access Control, Understanding static, Introducing final, Arrays Revisited, Inheritance: Inheritance,
+Using super, Creating a Multilevel Hierarchy, When Constructors Are Called, Method Overriding,
+Dynamic Method Dispatch, Using Abstract Classes, Using final with Inheritance, The Object Class.
+Text book 1: Ch 6,Ch7(2.1-7.9)
+» The General Form of a Class
+* A class is declared by use of the class keyword. A simplified general form of a class definition isshown.
+here:
+| & class classname {
+ype instance-variable];
+type instance-variable2;
+Wa
+sppe instance-variableN; —
+type methodnamel (parameter-list) {
+- 17 body of method
+J
+bype methodname2(parameter-list) {
+1/ body of method
+) .
+Wow
+sype methodnameN(parameter-list){
+I body of method
+}
+}
+
++ The data, or variables, ‘defined within a class are called instance variables: The. code...
+contained within methods. Collectively, the methods and variables defined within a class are
+called members of the class. In most classes, the instance variables are acted upon and accessed
+
+Denonise eu
+
+
+===== PAGE 2 =====
+
+OBJECT ORIENTED PROGRAMMING WITH JAVA bask, eg
+by the methods defined for that class. ‘Thus, as a rule, itis the methods that determine hoy \ e
+class data can be used. ‘
+* Variables defined within a class are called instance variables because cach instance oF the class
+(that is each object of the class) contains its own copy of these variables, ‘Thus, the data for one
+‘object is separate and unique from the data for another,
+* All methods have the same general form as main( ), which we have been using thus far.
+However, most methouls will not be specified as static or public,
+* Notice that the general form of a class does not specify a main( ) method. Java classes do not
+need fo have a main( ) method. We only specily one if that class is the starting point for your
+Program. Further, applets don’t require a main() method at all,
+| > A Simple Class
+* Here is a class called Box that defines three instance variables: width, height, and depth.
+Currently, Box does not contain anymethods (but some Will be added soon). :
+class Box {
+double width; double height:double depth;
+}
+—— RSIS TH TREO TSR called Box. This name is
+used to declare objects of type Box. It is important to ‘remember that a lass declaration only
+Creates a template it does not create an actual object. Thus, the Preceding code does not cause
+any objeets of type Box t0 come into existence. To ereate a Box object, you will use a
+statement like the following:
+Box mybox = new Box(); //create a Box object called mybox
+| * Aller this statement executes, mybox will be an instance of Box: Thus. it will have “physical”
+reality For the moment, do not worry about the details of this statement,
+i * Each time you create an instance of a class, you are Greating an object that contains its own
+CoPY of each instance variable defined by the class, Thus, every Box object will contain its F
+Own copies ofthe instance variables width, height, and depth, [
+* To.access these variables, you will use the dor © operator. The dot operator links the name of i
+. . the object with the name of an instance variable, For example, to assign the width variable of -
+mybox the value 100, you would use the following statement: 5
+mybox.width = 100; Ss
+BE SS
+
+
+===== PAGE 3 =====
+
+ey OBJECTORIENTEDPROGRAMMINGWiTiAvA | S868
+: + This statement tells the compiler to assign the copy of wilth that is contained within themybox
+: object the value of 100. In general, you use the dot operator to access both the instance variables
+and the methods within an object. Here is a complete program that uses the Box class:
+/* A program that uses the Box class.Call this file BoxDemo.java*/ ‘
+class Box {
+double width;
+double height;
+double depth;
+}
+I This class declares an object of type Box.class
+BoxDemo {
+public static void main(String args[]) {Box mybox = new Box();
+double vol;
+J/ assign values to mybox's instance variables
+mybox.width = 10; .
+mybox.height = 20;
+mybox.depth = 155
+‘//- compute volume of box
+— Vol= mybox.width * mybox.height * mybox.depth;
+System out printin("Volume is " + vol);
+}
+}
+
+«The file that contains this program BoxDemo,java, because the main( ) methodis in the class
+called BoxDemo, not the class called Box. When you compile this program, you will find that
+tywo sclass files have been created, one for Box and one for BoxDemo. :
+
+«The Java compiler automatically puts each class into its own .class file. It is not necessary for
+both the Box and the BoxDemo class to be in the same source file. You could put each class in
+sts own file, called Box,java and BoxDemo.java, respectively. To run this program, you must
+‘execute BoxDemo.class. When you do, you will see the following output:
+
+Volume is 3000.0 :
+
+«Each object has its own copies of the instance variables. This means that if youhave two Box
+objects, each has its own copy of depth, width, and height.
+
++ Changes to the instance variables of one object have no effect on the instance variables of
+
+aE TET
+Dept of ISE, RNSIT Page 3
+
+
+===== PAGE 4 =====
+
+4 Si
+OBJECT ORIENTED PROGRAMMING WITH JAVA Bes3, ae 2
+another. For example, the following program declares two Box objects: \
+“This program declares two Box objects,
+class Box {
+double width; double height;double depth;
+}
+class BoxDemo2 {
+Public static void ‘main(String argst)) {Box mybox! = new Box();
+Box mybox2 = new Box():double vol;
+assign values to mybox!'s instance variables
+mybox width = 10;
+mybox! height = 29,
+mybox| depth = 15,
+} /* assign different Values to mybox2'sinstance variables */
+mybox2.width = 3;
+: ‘mybox2-height = 6,
+3 mybox2. depth = 9;
+“compute volume of first box
+| vol = mybox width * mybox height - “RyboX!.depth System out printn(*Volume is"+ vol);
+4 vol = mybox2.width * mybox2. height * 'mybox2.depth; System, ‘Out printin("Volume is" + vol; .
+| }
+= }
+< ‘The output produced by this program is shown here:
+4 Volume is 3000.0
+| Volume is 162.0 :
+G mybox1’s data is separate from the data contained in mybox2.
+i > Declaring Objects:
+* When you create a Class, you are creating a new data type. You can use this type to declare
+| objects of that type,
+. Obtaining objects oF class's a iwo:step process, First, you must declare a variable of the class
+type. This variable does not define an object.Instead, itis simply a Variable that can refer to
+an object. Second, You must acquire an actual, physical Copy of the object and assign it to that
+—=—$—$
+
+
+===== PAGE 5 =====
+
+a BCS306A
+ay variable by using the newoperator.
+. m nev orate aay toss (that is, allocates ‘al run time) memory foran object
+. This reference is the address in memory ofthe object allocated by
+new.
+* This reference is then stored in the variable, Thus, in Java, all class objects must be
+dynamically allocated. In the preceding sample programs, a line like the following is used to
+declare an object of type Box:
+‘+ Box mybox = new Box();
+Box mybox; MI declare reference to object
+mybox = new Box(); // allocate a Box object
++ The first line declares mybox as a reference to an object of type Box. After this line
+executes, mybox contains the value null, which indicates that it does not yet point to an actual
+object.
+© Any attempt to use mybox at this point will result in a compile-time error. The next line
+allocatesan actual object and assigns a reference to it to mybox.
+« Afier the second line executes, you can use mybox as if it were a Box object. But, mybox
+simply holds the memory address of the actual Box object. The effect of these two lines of |
+________ ---sode is depicted _—______—. |
+. Rue 2 Statement Effect, |
+Sipe Bat | myboxt Eq
+| mybox
+mybor=new Box [==
+| mbox [Height |
+Box object
+© Here, class-var is a variable of the class type being created. The classname is the name of the
+lass that is being instantiated.
+: “S The class name followed by parentheses specifies the constructor for the class. A constructor
+defines what occurs when an object of a class is created. Constructors are an important part of
+all classes and have many significant attributes,
+me
+Dept of ISE, RNSIT Page S
+A
+
+
+===== PAGE 6 =====
+
+OBJECT ORIENTED PROGRAMMING WITH JAVA BCS3ngy. Ga
+ce
+* However, if no explicit constructor is specified, then Java will automatically SUPPIY a defauy, \
+Constructor. This isthe case with Box. There is no need to use new for such things as imegers
+OF characters as Java's primitive types are not implemented as objects. Rather, they are
+implemented as “normal” variables.
+* Tis important to understand that new allocates memory for an object during run time. The
+advantage of this approach is that program can create as many or as few objects as it needs
+Goring the execution of your program. However, since memory is finite, it is possible that
+NENW Will not be able to allocate memory for an object because insufficient memory exists. If
+this happens, a run-time exception will occur,
+* A class creates a new data ‘ype that can be used to create objects. That is, a class creates a
+logical framework that defines the relationship between its members. When you declare an
+object ofa clas, you are creating an instance of that class. Thus, a class is a logical construct,
+‘An object has physical realty. (That is, an object occupies space in memory.)
+> Assigning Object Reference Variables
+‘© Object reference Variables act differently than you might expect when an assignment takes
+place. For example,
+. Box bl = new Box();
+Box b2= bl; a
+| * You might think that 62 is being assigned a reference to a Copy of the object referred to by bl.
+That is, bl and b2 refer to ‘Separate and distinct objects, However, this would be wrong.
+Instead, after this fragment executes, bl and b2 w ill both refer to the same object,
+* The assignment of bl to b2 did not allocate any memory or copy any. Part of the original object.
+Kt simply makes b2 refer to the same object as does b1. Thus, any changes made to the object
+"through b2 will affect the object to which bl is referring, since they are the same object. This
+situation is depicted here:
+* Although bi and b2 both refer to the same object, they are not linked in any other way, For
+Sxample, a subsequent assignment to b1 will simply unhook DI from the original object
+| without affecting the object or affecting b2. For example:
+* Box bi =new Box();
+: ~ Box b2 5 b1; Tee uo
+Mn
+bl =null;
+Dept of ISE, RNSIT Page 6
+a
+
+
+===== PAGE 7 =====
+
+7 Hefe, bI has been set to null, but b2 still points to the original object.
+[Height] Bos object
+co
+rey
+> Introducing Methods
+«Classes usually consist of two things: instance variables and methods. This is the general |
+formof a method: |
+type name(parameter-list) { i
+11 body of method |
+} H
+| + Here, spe specifies the type of data returned by the method. This can be any valid tyPe, i
+including class types that you create. If the method does not return a value, its return type f
+must be void. The name of the method is specified by name. |
+«© This can be any legal identifier other than those already used by other items within the |
+current scope. The parameter-list is a sequence of type. and identifier pairs separated by 4
+commas, Parameters are essentially variables that receive the value of the arguments passed i
+to the method when it is called.
+«ifthe method has no parameters, then the parameter list will be empty. Methods that have a
+return type other than void retum a value tothe calling routine using the following form of
+the
+return statement:
+Here, value is the value retuned.
+> Adding a Method to the Box Class |
+1! This program includes a method inside the box class. |
+class Box {
+<< double width; ”
+double height;
+double depth;
+I display volume of a box.
+Dept of ISE, RNSIT. Page 7
+
+
+===== PAGE 8 =====
+
+mi A ee
+void volume() { Vee -
+‘System.out.print("Volume is "); ee
+System.out.printIn(width * height * depth); NE
+}
+class BoxDemo3 {
+Public static void main(String argsf}) {
+Box mybox1 = new Box();
+Box mybox2 = new Box();
+// assign values to mybox1's instance variables
+mybox1 width = 10;
+mybox_ height = 20;
+mybox!.depth = 15;
+/* assign different values to mybox2's instance variables */
+. mybox2.width = 3;
+mybox2.height = 6;
+mybox2.depth = 9;
+| M1 display volume of first box ee
+| myboxI.volume();
+1 display volume of second box
+mybox2.volume();
+| }
+}
+This program generates the following output, which is the ‘same as the previous version.
+Volume is 3000.0
+Volume is 162.0
+Look closely at the following two lines of code:
+mybox!.volume();
+mybox2.volume();
+* The Bist line here. invokes the volume( }-method on myboxt. That is, tcalls volume)...
+relative to the mybox1 object, using the object’s name followed by the dot operator. Thus,
+the call to mybox1.volume( ) displays the volume of the box defined by mybox1, and the
+call to mybox2.volume( ) displays the volume of the box defined by mybox2, Each time
+aS
+
+
+===== PAGE 9 =====
+
+¥ volume( )isinvoked, it displays the volume forthe specified box.
+
+© When mybox!.volume( ) is executed, the Java run-time system transfers control to the code
+defined inside volume( ), After the statements inside volume( ) have executed, control is
+retumed to the calling routine, and execution resumes with the line of code following the
+call.
+
++ There is something very important to notice inside the volume( ) method: the instance
+variables width, height, and depth are referred to directly, without preceding them with an
+object name or the dot operator.
+
+© When a method uses an instance variable that is defined by its class, it does so directly,
+without explicit reference to an object and without use of the dot operator. A method is
+always invoked relative to some object of its class. Once this invocation has occurred, the
+object is known. Thus, within a method, there is no need to specify the object a second time.
+‘This means that width, height, and depth inside volume( ) implicitly refer to the copies of
+those variables found in the object that invokes volume ).
+
+© When an instance variable is accessed by code that is not part of the class in which that
+instance variable is defined, it must be done through an object, by use of the dot operator.
+However, when an instance variable is accessed-by code thatis- part of the same-ctass-as the"
+instance variable, that variable can be referred to directly. The same thing applies to
+methods.
+> Returning a Value
++ A better way to implement volume( ) is to have it compute the volume of the box and
+returnthe result to the caller, The following example, an improved version of the preceding
+a program,
+/INow, volume() returns the volume of a box.class
+Box {
+double width;
+double height;
+double depth;
+. compute anid return volume” tte 7 .
+double volume() {
+retum width * height * depth;
+DOSER Pane
+
+
+===== PAGE 10 =====
+
+a
+}
+class BoxDemo4 {
+public static void main(String args{]) {
+Box mybox! = new Box();
+Box mybox2 = new Box();double vol;
+JL assign values to mybox!'s instance variables
+mybox | .width = 10;
+mybox I height = 20;
+mybox I depth = 15;
+/* assign different values to mybox2's instance variables #/
+mybox2.width = 3;
+mybox2.height = 6;
+mybox2.depth = 9;
+11 get volume of first box
+vol = mybox I volume();
+System.out.printIn("Volume is "+ vol); // get volume of second
+boxvol = mybox2.volume();
+‘System.out.printin("Volume is "+ vol);
+; .
+-
++ When volume( ) is called, it is Put on the right side of an assignment statement. On the left is
+a variable, in this case vol, that will receive the value returned by volume( ). Thus,after vol =
+mybox!.volume(); executes, the value of mybox1.volume( ) is 3,000 and this value then is
+"stored in vol.
+* There are two important things to understand about returning values: The type of data
+Telumed by a method must be compatible with the ret type specified by the method. For
+example, if the return type of some method is boolean, you could not returnan integer.
+* The variable receiving the value returned by a method (such as vol, inthis case) must also be
+Compatible with the return type specified for the method, a
+j * The preceding program can be written a bit more efficiently because there is actually no need °
+i for the vol variable. The call to volume( ) could have been used in the printin( ) statement
+directly, as shown here: System.out.printIn("Volume is " + mybox!.volume());
+Dept of ISE, RNSIT Page 10
+-
+
+
+===== PAGE 11 =====
+
+AS pcp
+Sy BCS306A
+ey . 'n this case, when Printin( ) is executed, mybox1.volume( ) will be called automatically and
+) its value will be passed to printin( ).
+> Adding a Method That Takes Parameters
+* Parameters allow a method to be generalized. That is, a parameterized method can operate
+‘ona variety of data and/or be used in several slightly different situations.
+* To illustrate this point, let’s use a very simple example. Here is a method that returns the
+‘square of the number10:
+
+© int square {
+
+return 10 * 10;
+
+)
+
+© While this method does, return the value of 10 squared, its use is very limited. However, if
+you modify the method so that it takes a parameter, then you can make square( ) much more
+useful.
+
+© int square(int i) {
+return i * i; }
+
+«Now, square( ) will return the square of whatever value itis called with. That is, square() is
+ow a general-purpose method that can compute the square of any integer-vahve;rather there —— ——~
+just 10. Here is an example:
+
+© intx, ys
+x= square(5); // x equals
+25x = square(9); // x equals 81 = 2;
+x= square(y); //x equals 4
+
+© Inthe first-call to square( ), the value 5 will be passed into parameter i. In the second call, i
+will receive the value 9. The third invocation passes the value of y, which is 2 in this example.
+
+«As these examples show, square( ) is able to return the square of whatever data itis passed. It
+is important to keep the two terms parameter and argument straight.
+
+© Aparameter is a variable defined by a method that receives a value when the method is called.
+For example, in square ),i is a parameter. An argument is a value that is passed to a method
+
+. when it is invoked. For example, square(100) passes 100 as an.argument. Inside square(), the .
+parameter i receives that value.
+1 This program uses a parameterized method.class
+Box {
+Dept of ISE, RNSIT Page 11
+A
+
+
+===== PAGE 12 =====
+
+OBJECT ORIENTED PROGRAMMING WITH JAVA Bcs306q Ves
+double width; VE
+double height; Ni
+double depth; \
+4 compute and return volume
+double volume() {
+return width * height * depth;
+
+}
+Msets dimensions of box
+void setDim(double W, double h, double 4) {width = w;
+height = h;depth = a;
+}
+}
+class BoxDemos {
+Public static void main(String arest) (
+Box mybox! = new Box();
+Box mybox2 = new Box();
+double vol; .
+a WH initialize each box
+mybox I.setDim(10, 20, 15);
+mybox2.setDim(3, 6, 9): .
+1 get volume of first box
+vol = mybox1.volume();
+System.out.printin¢"Volume is " + vol;
+1/ get volume of second box Le
+vol = mybox2.volume(); .
+System.out printin(*Volume is" + vol);
+}
+}
+* The setDim( ) method is used to set the dimensions of each box. For example, when
+| mybox!.setDim( 0, 20,15); is executed, 10 is copied into parameter w, 20 is copieil into h, :
+and 15 is copied into d. Inside setDim ) the values of wh, and dare then assigned to
+width, height, and depth, respectively,
+rr
+-
+
+
+===== PAGE 13 =====
+
+QOECTORIENTED PROGRAMMING Wrrnyava | mes068
+> Constructors
+* A constructor initializes an object immediately upon creation. It has the same name as the
+class in which it resides and is syntactically like a method. Once defined, the constructor is
+automatically called immediately after the object is created, before the mew operator
+completes.
++ Constructors have no return type, not even void. This is because the implicit return type of @
+class constructor is the class type itself.
+© Let us begin by defining a simple constructor that simply sets the dimensions of each box 10
+the same values. This version is shown here:
+/* Here, Box uses a constructor to initialize thedimensions of a box.*/
+Class Box {
+double width;
+double height;
+double depth;
+1/ This is the constructor for Box.
+Box() { |
+System.out.println("Constructing Box"};width = 10; |
+_ height = 10;
+depth = 105
+- }
+1 compute and return volume
+double volume() {
+return width * height * depth;
+}
+class BoxDemo6 {
+public static void main(String args{)) (
+1 declare, allocate, and initialize Box objects
+Box mybox! = new Box();
+Box mybox2 = new Box(); . : 7
+double vol; : :
+di get volume of first box
+vol = mybox!.volume();
+Dept of ISE, RNSIT Page 13
+&
+
+
+===== PAGE 14 =====
+
+P ee
+‘System.out.printin("Volume is " + vol); i
+17 get volume of second box
+vol = mybox?.volume();
+System out printin("Volume is "+ vol);
+}
+3
+‘When this program is run, it generates the following results:
+Constructing Box
+| Constructing Box
+Volumes 1000.0
+Volume is 1000.0
+* Both myboxt and mybox2 were initialized by the Box() constructor when they were created.
+Since the constructor gives all boxes the same dimensions, 10 by 10 by 10, both myboxt and
+‘mybox2 will have the same volume,
+* The printin( ) statement inside Box() is for the sake of illustration only. Most constructors
+Will not display anything. They will simply initialize an object when you allocate an object,
+1 youuse the following general form: class-var= new elassname( );
+= Now you can understand why the parentheses are needed after the class name. What is
+ji ~~ happening is that he. onstnicior for the elas is being called. Thus, in the line Box mybox! =
+‘new Box(); mew Box() is calling the Box( ) constructor.
+* When you do not explicitly define a constructor fr a class, then Java creates a default
+Ronsior forthe class Ths is why the preceding line ofcode worked in earn versions of
+Box that did not define a constructor.
+* The default constructor automatically initializes all instance variables t0 zero. The default
+Sonstmiter is offen sufficient for simple clases, but it usually) wont do for more
+Sophisticated ones. Once you define your own consiructor, the default constructor is no
+Jonger used.
+> Parameterized Constructors
+1 While the Box( ) constructor in the preceding example does initialize a Box object, it is
+. ‘not of various dimensions,
+* /* Here, Box uses a parameterized constructor toinitilize the dimensions of a box.*/
+class Box {
+| SR
+—————
+
+
+===== PAGE 15 =====
+
+a8 BCS306A
+Kk double width;
+double height;
+double depth;
+11 This is the constructor for Box.
+Box(double w, double h, double d)
+{
+width = w;
+height = h;
+depth=d;
+}
+1/ compute and return yolume
+double volume() { |
+retum width * height * depth;
+) |
+class BoxDemo7 { .
+public static void main(String args{]) { |
+______-Hteetareratloente, and initialize Box objects |
+Box mybox! = new Box(10, 20, 15);
+Box mybox2 = new Box(3, 6, 9)5
+double vol;
+1 get volume of first box
+vol = mybox!.volume();
+System.out.printIn("Volume is "+ vol)s ot
+I/ get volume of second box
+vol = mybox2.volume();
+System.out.printin("Volume is " + vol);
+}
+}
+“The output from this program is shown here: 3 .
+Volume is 3000.0
+. Volume is 162.0
+sc
+Dept of ISE, RNSIT Page 15
+ea eneeme
+
+
+===== PAGE 16 =====
+
+Bcs3060 \
+OBJECT ORIENTED PROGRAMMING WITH JAVA 6A oe
+Cs
+a i sxample, in th
+* Each object is initialized as specified in the parameters to its constructor. For example, in the \.
+5 5 u
+following line, Box mybox1 = new Box(10, 20, 13); the values 10, 20, and 15 are passed to
+the Box( ) constructor when new creates the object. Thus, mybox1's copy of width, height,
+. and depth will contain the values 10, 20, and 15, respectively.
+> This this Keyword
++ Sometimes a method will need to refer to the object that invoked it. To allow this, Java
+defines this keyword. this can be used inside any method to refer to the current object. That
+is, thisis always a reference to the object on which the method was invoked. You can use this
+anywhere a reference to an object of the current class type is permitted, To better understand
+what this refers to, consider the following version of Box( ):
+WA redundant use of this.
+Box(double w, double h, double d) {this.width = w;
+this.height = h
+this.depth = d;
+}
+- * This version of Box( ) operates exactly like the earlier version. The use of this is redundant,
+but perfectly correct. Inside Box( , this will always refer to the invoking object.
+> Instance Variable Hiding
+* Its illegal in Java to declare two local variables with the same name inside the same or
+‘enclosing scopes. Interestingly, you can have local variables, including formal parameters to
+‘methods, which overlap with the names of the class instance variables.
++ When a local variable has the same name as an instance variable, the local variable hidles the
+instance variable. This is why width, height, and depth were not used as the names of the
+parameters to the Box( ) constructor inside the Box class.
+* Ifthey had been, then width would have referred to the formal parameter, hiding the instance
+variable width. Because this lets you refer directly to the object, you can use it to resolve
+i * any name space.collisions that might occur between instance variables and local variables,
+For example, here is another version of Box( ), which uses width, height, and depth for
+Parameter names and then uses this to access the instance variables by the same name:
+// Use this to resolve name-space collisions.
+Dept of ISE, RNSIT Page 16
+z om
+
+
+===== PAGE 17 =====
+
+= = S/ OBJECT ORIENTED PROGRAMMING WiTH JAVA
+: 5 Box(double width, double height, double depth) {
+: thisavidth = widths
+this height = heightsthis.depth = depth;
+}
+> Garbage Collection
+
+* Since objects are dynamically allocated by using the new operator, you might be wondering
+how such objects are destroyed and their memory released for later reallocation Java takes a
+different approach; it handles deallocation for you automatically.
+
+* The technique that accomplishes this is called garbage collection. It works like this:
+when no references to an object exist, that object is assumed to be no longer needed, and
+the memory occupied by the object can be reclaimed.
+
+‘© Garbage collection only occurs sporadically (if at all) during the execution of your program.
+It will not occur simply because one or more objects exist that ‘are no longer used.
+Furthermore, different Java run-time implementations will take varying approaches to
+garbage collection, but for the most part, you should not have to think about it while writing,
+your programs.
+
+> The finalize( ) Method
+‘© Sometimes an object will need to perform some action when it is destroyed. For example, if an
+object is holding some non-Java resource such as a file handle or character font, then you might
+want to make sure these resources are freed before an object is destroyed. To handle such
+situations, Java provides a mechanism called finalization. By using finalization, you can define
+specific actions that will occur when an object is just about to be reclaimed by the garbage
+collector.
+© To add a finalizer to a class, you simply define the finalize( ) method. The Java run time calls
+that method whenever it is about to recycle an object of that class. Inside the finalize( )
+method, you will specify those actions that must be performed before an object is destroyed.
++ The garbage collector runs periodically, checking for objects that are no longer referenced by
+: + any running state or indirectly through other referenced objects. Right before an asset is freed,
+the Java run time calls the finalize( ) method on the object. The finalize( ) method has this
+. general form:
+protected void finalize( )
+Deroy Pg
+
+
+===== PAGE 18 =====
+
+Bes3oeq \.
+OBJECT ORIENTED PROGRAMMING WITH JAVA ee
+Minalization code here \
+}
+* Here, the keyword protected is a Specifier that prevents access to finalize( ) by code defined
+Ouside its class. tis important to understand that finalize( ) is only called just prior to
+garbage collection,
+> A Stack Class
+* A stack stores data using frst, lastout ordering. That is, a stack is like a stack of plates on
+2 '8ble—the Fst plate put down on the table isthe last plate to be used,
+* Stacks are controlled through two operations traditionally called push and pop. To. ut an item
+On 6? of the stack, you will use push, To take an item off the stack, you will use pop. As you
+‘ill sec, itis easy to encapsulate the entre stack mechanism.
+* Here isa class called Stack that implements a stack for integers:
+"This class defines an integer stack that can hold 10 vatues.
+class Stack {
+int stek{] = new ini{10};\
+int tos;
+Moitialize top-of-stack or
+: Stack() ¢
+tos=-1;
+}
+17 Pash an item onto the stack
+Void push(int item)
+if{tos==9)
+System.out printin Stack is full.)
+else
+Stk{+#105) = item;
+}
+© U1 Pop an item from the stake a . .
+int pop) {
+ifftos <0) {
+System.outprintin'Stck undertow),
+a
+es
+
+
+===== PAGE 19 =====
+
+AS _QBECTORIENTED PROGRAMMING WITH java
+S return 0;
+else
+retum stck[tos--];
+}
+}
+* The Stack class defines two data items and three methods. The stack of integers is held by the
+array stck. This array is indexed by the variable tos, which always contains the index of the
+‘op of the stack. The Stack( ) constructor initializes tos to —1, which indicates an empy stack.
+‘The method push( ) puts an item on the stack.
+* To retrieve an item, call pop( ). Since access to the stack is through push( ) and pop( ), the
+fact that the stack is held in an array is actually not relevant to using the stack. For example,
+‘the stack could be held in a more complicated data structure, such as a linked list, yet the
+interface defined by push() and pop() would remain the same.
+© The class TestStack, shown here, demonstrates the Stack class. It creates two integer stacks,
+pushes some values onto each, and then pops them off.
+class TestStack {
+public stati void main(String ares{) ae
+| ‘Stack mystack! = new Stack;
+| Stack mystack2 =new Stack(); :
+17 push some numbers onto the stack
+forfint i=0; i<10; i++)
+imystack I push(i;
+fortimt i=10; +<20; +4)
+mystack2,push(i); °
+1 pop those numbers off the stack
+System.out.printin("Stack in mystackl:");
+for(int i-0; i<10; +4)
+System.out printIn(mystack pop);
+: System.out.prntin("Stack in mystack2:");
+i int i205 i<10; 144) :
+System.out.printIn(mystack2.pop());
+}
+Dept of ISE, RNSIT Page 19
+
+
+===== PAGE 20 =====
+
+‘This program generates the following output: ‘ :
+Stack in mystackl: \
+: .
+8
+7
+6
+5
+4
+3
+2
+1
+°
+Stack in mystack2:
+. 19
+18
+17
+16 _
+15
+14
+13
+2
+I
+10 oe
+Dero RNSIT RS
+_..
+
+
+===== PAGE 21 =====
+
+<3, 297/ opjecT ORIENTED PR
+— i }OGRAMMING WITH JAVA Acs306A
+¥ Difference between Constructors and Methods
+Constructors Methods
+A Constructor is a block of code that ‘A Method is a collection of statements
+initializes a newly created object which retums a value upon its execution
+A Constructor can be used to initialize an A Method consists of Java code to be
+object. executed
+ACo i i
+nstructor is invoked implicitly by the a sAethod is invoked by the programmer.
+system.
+A Constructor is invoked when a object is
+h od calls.
+nroatod using the keyword nen, A Method is invoked through meth
+‘A Constructor doesn't have a retum type A Method must have a return type.
+A Constructor initializes a object that A Method does operations on an already
+doesn't exist. created object.
+A Constructor’s name must be same as :
+__A Method's name-can be anything
+the name of the class. name
+‘Aclass can have many Constructors but A class can have many methods but must
+must not have the same parameters. not have the same parameters.
+A Constructor cannot be inherited by 4 Method can be inherited by subclasses.
+subclasses.
+> Overloading Methods
+In Java it is possible to define two or more methods within the same class that share the same
+name, if their parameter declarations are different. When this is the case, the methods are said
+to be overloaded, and the process is referred to as method overloading.
+
+. -® Method overloading, is one of the ways. that Java supports polymorphism. When an
+overloaded method is invoked, Java uses the type andor number of arguments as its guide to
+determine which version of the overloaded method to call. Thus, overloaded methods must
+differ in the type and/or number of their parameters.
+
+eee ails Se eT
+Dept of ISE, RNSIT Page 21
+
+
+===== PAGE 22 =====
+
+ae
+OBIECT ORIENTED PROGRAMMING WITH JAVA BCSang\ ee fj
+* While overloaded methods may have different retum types, the return {ype atone ig V7 Bas
+insufficient to distinguish wo versions of a method. When Java encounters a call to an ae
+overloaded method, it simply executes the version of the method whose Parameters match the Va
+Arguments used in the call. Here is a simple example that illustrates method overloading: @
+4 Demonstrate method overloading, \
+lass OverloadDemo {
+Void test() {
+System.out.printin("No Parameters");
+] }
+1 Overload test for one integer parameter,
+Void test(int a) {
+q ‘System.out printin(“a: "+a);
+}
+1 Overload test for two integer parameters,
+Void testint a int by ¢
+| System.out. PrintIn(“a and b: " tat"™ +p);
+)
+q —Lnverioad test fora double parameter
+double test(double a) {
+‘System.out.printin(“double a: "+ a);
+return ata;
+}
+}
+lass Overload { .
+Public static void main(String args{}) {
+OverloadDemo. ob=new OverloadDemo();
+double result;
+4 call all versions of test()
+ob.test();
+ob.test(10); Bo .
+ob.test(10, 20);
+result = ob.test(123.25);
+System.out.printin("Result of ob, test(123.25): "+ result);
+Dept of ISE, RNSIT Page 22
+1
+_
+
+
+===== PAGE 23 =====
+
+SNS B¢S3068
+S }
+This program generates the following ‘oittput:
+No parametersa: 10
+a and b: 1020
+double a: 123.25
+Result of ob.test(123.25): 15190.5625
+© test() is overloaded four times. The first version takes no parameters, the second takes one
+integer parameter, the third takes two integer parameters, and the fourth takes one double
+parameter. The fact that the fourth version of test() also returns a value is ofno consequence
+relative to overloading, since return types do not play a role in overload resolution.
+‘© When an overloaded method is called, Java looks for a match between the arguments used to
+call the method and the method's parameters. However, this match need not always be exact.
+In some cases, Java's automatic type conversions can play a role in overload resolution.
++ For example, consider the following program:
+11 Automatic type conversions apply to overloading.
+class OverloadDemo { ae
+void test() {
+‘system.out.printIn("No parameters");
+}
+// Overload test for two integer parameters.
+void test(int a, int 6) {
+System .out.printin("a and b:"+a+""-+b);
+}
+//overload test for a double parameter
+void tes(double a) {
+System.out printin(“Inside test(double) a: "+ a);
+}
+j class Overload { ce —_ :
+public static void main(String args{]) {
+OverloadDemo ob = new OverloadDemo();int i= 88;
+nn ———
+Dept of ISE, RNSIT. Page 23
+a
+
+
+===== PAGE 24 =====
+
+OBIECT ORIENTED PROGRAMMING WITH JAVA BCs306q ae
+ob.test(10, 20): Ve
+© te31(; this will invoke tes double)
+ob es(123.2): (this will invoke te double)
+
+}
+}
+‘This programm generates the following output
+No parametersa and b: 10.20
+Inside test(double) a: 8§
+Inside test(double) a: 123.2
+* This version of Overload Demo does not define ‘est(int). Therefore, when test() is called
+with an integer argument inside Overtoad, no ‘matching method is Found. However, Java ean
+eciomatically conver an integer nto a double, and this conversion can be used to resolve the
+Call: Therefore, afer test(int) is not found, Java elevate 1 t0 double and then calls
+‘sst@ouble). Ofcourse, if test(int had been defined it would have been called instead, Java
+“ilemploy its automatic ype conversions ony ifn exact match, is found,
+{Method overloading supports polymorphism because itis one ay that Java implements the
+_o- © ORETITETICE RUPE TEMTOUS PaPSTEMThe value ot overloading is that it allows related
+methods to be accessed by use of common name.
+> Overloading Constructors .
+class Box {
+double width;
+double height;
+double depth; .
+4 This is the constructor for Box.
+Box(double w, double h, double d) {
+width = ws
+height = hs
+depth = d; :
+; .
+compute and return volume
+double volume() {
+Dept of ISE, RNSIT Page 24
+
+
+===== PAGE 25 =====
+
+“7 eerie 2
+BSoy/_OBIECT ORIENTED PROGRAMMING Wirt JAVA
+) Felum width * height * depths
+My
+. The Box( ) constructor requires three parameters. This means that all declarations of Box
+objects must pass three Arguments to the Box( ) constructor. For example, the following
+statement is currently invalid:
+Box ob = new Box(;
+* Since Box( ) requires three arguments, it's an error to cal it without them. ‘This raises some
+important questions. What if you simply wanted a box and did not care (or know) shat its
+initial dimensions were? Or, what if you want to be able to initialize a cube by specifying |
+only one value that would be used for all three dimensions? As the Box class is currently
+Written, these other options are not available to you. Fortunately, the solution to these |
+Problems is quite easy: simply overload the Box constructor so that it handles the situations
+Just described. Here is a program that contains an improved version of Box that does just that:
+* Here, Box defines three constructors to initializethe dimensions of a box various ways.
+class Box {
+double width; |
+a double height;
+double depth; |
+= Meonstructor used when all dimensions specified
+Box(double w, double h, double d) { .
+width = w; |
+height = h;
+7 depth = d; a
+. )
+| 1/ constructor used when no dimensions specified
+Box() {
+width = -1;
+Muse-1 to indicatean uninitialized box
+height = -1; - : :
+depth = -1;
+| }
+I/ constructor used when cube is ereated
+Dept of ISE, RNSIT Page 25
+
+
+===== PAGE 26 =====
+
+OBJECT ORIENTED PROGRAMMING WITH JAVA BCS3064 ey
+‘width = height = depth = ten; \
+}
+“/computeand return volume
+double volumeg {
+‘elu width * height © depths
+}
+}
+lass OverloadCons {
+Public static void main(String argst)) (
+‘Vereate boxes using the various constructors
+Box myboxl = new Box(10, 29, 13);
+Box mybox2 = new Box();
+Box mycube = new Box(7);
+double vol; .
+1 get volume of first box
+vol = mybox!.volume();
+System.outprintn("Volume of myboxt ig +vo);
+} “Wet volume of second _
+boxvol = mybox2.volume():
+System.out printin(*Volume OF mybox? is" + vol); .
+1/ get volume of cube
+vol = mycube.volume(;
+System outprining“Votume of myeube ig "4 vol);
+; .
+}
+The output produced by this program ig shown here:
+Volume of mybox! is 3000.0
+Volume of mybox2 is -1,9
+Volume of mycube is 343.0
+* The proper overloaded constructor is called based upon the parameters specified when new
+is executed,
+Dept of ISE, RNSIT Page 26
+<———
+
+
+===== PAGE 27 =====
+
+oa SAY _ OBJECT ORIENTED PROGRAMMING WITH Java
+ay > Using Objects as Parameters
+
+* So far, we have only been using simple types as parameters to methods. However, it is both
+correct and common to pass objects to methods. For example, consider the following short
+program:
+i Objects may be passed to methods.
+class Test {
+inta, b;
+Test(int i, int j) {a= i; |
+bai
+y |
+J/ return true if o is equal to the invoking object !
+boolean equals(Test 0) { {
+iffo.a == a && 0.b = b) |
+return true; .
+else
+return false;
+}
+
+5
+
+class PassOb {
+public static void main(String arg2s[]) {
+Test obl = new Test(100, 22);
+‘Test ob2 = new Test(100, 22);
+Test ob3 = new Test(-1, -1); .
+‘System.out.printIn(“ob "== ob2: " + ob! .equals(ob2)); .
+System.out.printIn(“ob| == ob3: "+ ob] equals(ob3));
+)
+}
+This program generates the following output:
+obl == 0b2: true .
+ob! == ob3: false S . : ;
+
+‘+ The equals( ) method inside Test compares two objects for equality and returns the result.
+That is, it compares the invoking object with the one that itis passed. If they contain the same
+
+————  ———— ET
+
+
+===== PAGE 28 =====
+
+hides.
+OBJECT ORIENTED PROGRAMMING WITH JAVA. BCS306) re ie
+Yalues, then the method returns true, Otherwise, it retums false. \e2 es
+* Notice that the Parameter o in equals( ) specifies Test as its type. Although Test is a class oS
+‘spe created by the program, it is used in just the same way as Java's built-in types. \
+. * One ofthe most common uses of object parameters involves constructors. Frequently, you
+Will want to construct a new object so that itis initially the same as some existing object. To
+do this, you must define a Constructor that takes an object of its class as a Parameter. For
+‘xample, the following version of Box allows one object to initialize another:
+1 Here, Box allows one object to initialize another.
+class Box {
+double width; double height;double depth;
+WNotice this constructor. It fakes an object of type Box.
+Box(Box ob) { / pass object to constructor
+width = ob. width;
+height = ob.height;
+depth =: ‘ob.depth;
+}
+constructor used when all dimensions Specified
+Box(double Ww, double h, double [ns a - >
+q width = wsheight = hydepth = d;
+}
+// constructor used when no dimensions specified
+Box() {
+width =~]; :
+: height = -1;
+depth = -1;
+J
+M constructor used when cube is created
+Box(double len) {
+‘width = height = depth = len;
+/ compute and return volume
+double volume() { )
+retum width * height * depth;
+Dept of ISE, RNSIT — ee) 28
+——
+
+
+===== PAGE 29 =====
+
+1) ovleCT ORIENTED PROGRAMMING WITH JAVA
+} class OverloadCons2 {
+Public static void main(String args{)) {
+1/ ereate boxes using the various constructors
+Box mybox1 = new Box(10, 20, 15);
+Box mybox2 = new Box();
+Box mycube = new Box(7);
+Box myclone = new Box(mybox1); // create copy of mybox!
+double vol; // get volume of first box
+‘vol = mybox I volume(); !
+System.out.printin("Volume of mybox1 is " + vol); |
+vol = mybox2.volume(); get volume of second box |
+‘System.out.printIn("Volume of mybox2 is "+ vol);
+vol = mycube.volume(); // get volume of cube . |
+System.out.printin("Volume of cube is "+ vol);
+‘vol = myclone.volume(); // get volume of clone
+____Systemoutprintin’Volum@B icra
+=F
+} . |
+> A Closer Look at Argument Passing |
+# Ingeneral, there are two ways that a computer language can pass an argument to a subroutine.
+The first way is call-by-value. This approach copies the value of an argument into the formal
+parameter of the subroutine. Therefore, changes made to the parameter of the subroutine have
+no effect on the argument.
+The second way an argument can be passed is cal-by-reference. In this approach, a reference
+to an argument (not the value of the argument) is passed to the parameter. Inside the
+subroutine, this reference is used to access the actual argument specified in the call, This
+| means that changes made to the parameter will affect the argument used to call the
+subroutine,
+Java uses both approaches, depending upon what is passed. In Java, when you passa primitive -
+type to a method, itis passed by value. Thus, what occurs to the parameter that receives the
+argument has no effect outside the method. For example, consider the following program:
+DeptoflSERNSIT 20
+
+
+===== PAGE 30 =====
+
+Ce
+ee
+Ve
+Bes3064 Vo
+OBJECT. ‘ORIENTED PROGRAMMING WITH JAVA Le
+i sain @
+1 Primitive types are passed by value, \
+class Test {
+Void meth(int i, ime jy
+ie=2; .
+jer
+J
+lass CallByValue ¢
+Public static void main(String args{}) ¢
+Test ob = new Tesi);
+inta= 15, b= 20;
+System.out.printin(“a and b before call; " tat" tb):
+ob.meth(a, b);
+System.out.printin("a and b after call: * tat" "4 by:
+yy
+‘The output from this program is shown here:
+and b before call: 1520
+| @and b after call: 1520
+* The operations that occur inside meth) have no effect om the values ofa and b used in the a
+call; their values here did not change to 30 and 10,
+
+* When you pass an object to a ‘method, the situation changes dramatically, because objects are
+Passed by what is effectively call-by-reference,
+
+* When you create avariable of a class ‘9Pe, you are only creating a reference to an object,
+‘Thus, when YOU pass this reference to a method, the Parameter that receives jt will refer to the
+same object as that referred 10 by the argument. This effectively means that objects are
+Pissed 10 methods by use of eall-by-reference. Changes to the object inside the method do
+affect the object used as an argument. For ‘example, consider the following program:
+
+1 Objects are passed by reference,
+class Test {
+int, b;
+Test(int i, int jy ( m. . Lo . .
+ari
+b=j;
+}
+2
+
+
+===== PAGE 31 =====
+
+Eg BCS306A
+o void meth(Test 0) { / pass an object
+y oa*=2;
+ob /= 2;
+yy
+class CallByRef {
+public static void main(String args[]) {Test ob = new Test(15, 20);
+System.out.printIn("ob.a and ob.b before call:" +ob.a-+"" + 0b.b);
+‘ob.meth(ob);
+System.out.printin("ob.a and ob.b after call: "+ ob.a +" " + ob.b);
+}
+}
+‘This program generates the following output:
+ob.a and ob.b before call: 15 20
+‘ob.a and ob.b after call: 30 10
+© The actions inside meth( ) have affected the object used as an argument. when an object
+reference is passed to a method, the reference itself is passed by use of call-by-value.
+‘© However, since the value being passed refers to an ‘object, the copy of that value will still
+refer to the same object that ts corresponding argument does.
+> Returning Objects :
+1s Amethod can retum any type of data, including class types that you create. For example, in .
+the following program, the inerByTen() method returns an object in which the value of a is
+ten greater than it is in the invoking object.
+‘J Returning an object.
+class Test {
+int a; Test(int i) { ,
+ari;
+}
+Test incrByTen() {
+‘Test temp = new Test(a+10);return temp;
+“© class RetOb {
+publie static void main(String args{]) (
+Test ob = new Test(2);
+Tease Page
+
+
+===== PAGE 32 =====
+
+estos, \
+ii
+Test ob2; ih
+(0b2 = ob inerByTen(); i
+System.out.prinln(“ob a: " + ob1.a); .
+System.out printin('ob2.a: " + ob2.a);
+ob2 = ob2.inerByTen();
+System,out.printin(“ob2.0 after second increase: "+ 0b2.2);
+yn
+The output generated by this program is shown here:
+obl.a: 2
+ob2.a: 12
+ob2.a after second increase: 22
+*+ Each time inerByTen() is invoked, a new object is created and a reference to itis retumed to
+the calling routine.
+> Recursion
+"s tava supports recursion. Recursion is the process of defining something in terms of itself. As
+it relates to Java programming, recursion is the atribute that allows a method to eallitsell. A
+method that cll itself is said to be recursive,
+}— * The classic example of recursion is the computation of the factorial of a number, ‘The
+factorial of a number NV is the product of all the whole numbers between | and N. For
+. example, factorial is 1 * 2 x 3, oF 6, Here is how a factorial ean be computed by use of a
+recursive method:
+14 simple example of recursion,
+class Factorial {
+int fact(intn) ( 1/thisis a recursive method...
+int result;
+itn=1)
+retum 1;
+| result = fact(n-l) *n;
+| return result;
+| ) . oe
+class Recursion { : .
+public static void main(String aresf)(
+Factorial f= new Factorial();
+| Dept of ISE, RNSIT Page 32
+- :
+
+
+===== PAGE 33 =====
+
+AS a nea
+as . OBJECT ORIENTED PROGRAMMING WITH JAVA
+System outprinin "Factorial of 3 is "+ £4013);
+y System.out.printin("Factorial of 4 is "+ ffact(4));
+vane PrintIn"Factorial of Sis" + £faet(S));
+:)
+‘The output from this program is shown here:
+Factorial of 3 is 6
+Factorial of 4 is 24
+Factorial of Sis 120
+* When fact() is called with an argument of 1, the function returns 1; otherwise, it returns the
+product of fact(n-1)*n,
+'* To evaluate this expression, fact( ) is called with n—1. This process repeats until n equals I
+‘and the calls to the method begin returning. When you compute the factorial of 3, the first call
+to fact( ) will cause a second call to be made with an argument of 2. This invocation will
+cause faet( ) to be called a third time with an argument of 1.
+© This call will return 1, which is then multiplied by 2 (the value of n in the second invocation).
+This result (which is 2) is then returned to the original invocation of fact( and multiplied
+by 3 (the original value of n). This yields the answer, 6———--——-——-—— —
+* When a method calls itself, new local variables and parameters are allocated storage on the :
+stack, and the method code is executed with these new variables from the start.
+«The main advantage to recursive methods is that they can be used to create clearer and
+simpler versions of several algorithms than can their iterative relatives. When writing
+recursive methods, you must have an if statement somewhere to force the method to return
+. «+ without the recursive call being executed. If you do not do this, once you call the method, it
+will never return. This is a very common error in working with recursion.
+«Use printin( ) statements liberally during development so that you can watch what is going on
+and abort execution if you see that you have made a mistake. Here is one more example of
+recursion. The recursive method printArray( ) prints the first i elements in the array values.
+class RecTest {
+. = int valuesf]s : : a is
+RecTest(int i) {
+values = new int{iJ; }
+void printArray(int i) { // display array ~ recursively
+Dept of ISE, RNSIT. Page 33
+a
+
+
+===== PAGE 34 =====
+
+‘ Ve
+% a
+BCS306q\.
+OBJECT ORIENTED PROGRAMMING WITH JAVA. Ri,
+eonereorrecmnnewminy deste v
+if(i=0) return;
+else
+printArray(i-1 3 .
+Sostemoutprintin("(" + (-1) +") "+ valuesfi-I)s
+dy
+class Recursion2 {
+Public static void main(String args) {
+RecTest ob = new RecTest(10);
+ints
+for(i=0; i<10; iH)
+‘ob.values[i} = i;
+ob printArray(10);
+}
+} ;
+> Introducing Access Control
+* Allowing access to data only through a well-defined set of ‘methods, you can prevent the
+‘misuse of that data. Java’s access specifiers are Public, private, and Protected. Java also
+teins ater access level. protected applies only when inheritance is involved. The other
+| Access specifiers. Let us begin by defining public and private,
+* When a member Of a class is modified by the Public specifier, then that member can be
+accessed by any other code. When a member of a class is specified as Private, then that
+member can only be accessed by other ‘members of its class. main( ) has always been
+Preceded by the public specifier. It is called by code that isoutside the Program—that is,
+by the Java run-time system. .
+* When no access Specifier is used, then by default the member of a class is public within its
+own package, but cannot be accessed outside of its package. Here is an example:
+public int is
+Private double j;
+Private int myMethod(int a, char DEM.
+/* This Program demonstrates the difference between Public and private.*/ -
+class Test {
+int a; default access public
+int b; / public access
+SR  —
+————————
+
+
+===== PAGE 35 =====
+
+r %
+© oBjECT ORIENTED PROGRAMMING WITH JAVA
+Private int c; // private access
+I methods to access ¢
+Void setc(int i) { // set c's value
+cris :
+)
+int gete() { 1/ got c's value
+retum ¢;
+)
+i)
+class AccessTest { )
+public static void main(String args{]) {
+“Test ob = new Test(); These are OK, a and b may be accessed direetly
+ob.a= 10; |
+ob.b = 20; // This is not OK and will cause an error
+‘ ‘ob.c = 100; // Error! // You must access ¢ through its methods,
+ob,sete(100); / OK |
+System.out.printin("a, b, and c:" +ob.a +" +ob.b +" " + ob.gete()); .
+) —
+)
+“e Inside the Test class, a uses default access, which for this example is the sameas specifying
+public. b is explicitly specified as public, Member ¢ is given private access. This means that
+jit cannot be accessed by code outside of its class. So, inside the AccessTest class, ¢ cannot be
+used directly. It must be accessed through its public methods: sete( ) and gete( ). If you were
+to remove the comment symbol from the beginning of the following line,
+«- //obe = 100; /! Error! then you would not be able to compile this program because of the
+access violation.
+> Understanding static
+«When a member is declared static, it can be accessed before any objects of its class are
+created, and without reference to any object. You can declare bath methods and variables to
+be stati. : 7 :
++ The most common example of a static member is main( ). main( ) is declared as static
+because it must be called before any objects exist. Instance variables declared as statie are.
+DepolseaNSI Page 3S
+
+
+===== PAGE 36 =====
+
+Besauga ss
+OBJECT ORIENTED PROGRAMMING WITH JAVA, es He
+ve
+essentially, global variables. : Cx
+* When objects of its class are declared, no copy of a static variable is made. Instead, att \v =
+instances of the class share the same statie variable.
+*+ Methods declared as statie have several restrictions:
+1. They can only call other static methods.
+2. They must only access static data.
+3. They cannot refer to this or super in any way.
+* Ifyou need to do computation in order to initialize your static variables, you can declare a
+State block that gets executed exactly once, when the class is first loaded. The following
+example shows a class that has Static method, some static variables, and a static
+initialization block:
+/ Demonstrate static variables, methods, and blocks.
+class UseStatic { .
+static int a= 3;
+static int b;
+static void meth(int x) {
+| System ont: printings x, —$——
+i} ‘System.out.printin("a =" + a);
+System.out.printIn("b ="+b); :
+i }
+static {
+System.out.printin("Static block initialized.");
+i b=at4;
+I )
+| Public static void main(String args{]) {
+meth(42);
+| }
+)
+"The UseSiatie class is loaded, all the static statements are run, Fist, a is set to 3, then the ~
+static block executes, which prints a message and then initializes b to a*4 or 12. Then main(
+) is called, which calls meth( ), passing 42 10 x. The three printin( ) statements refer tothe
+DepeoFSE RAS
+
+
+===== PAGE 37 =====
+
+SER ‘i
+7 BCS306A
+%) wo static variables a a el
+y owe ‘und by as well as to the local variable x. Here is the output of the
+Static block initialized,
+xed2
+as3 -
+b=12
+* Outside of the class in which they are defined, statie methods and variables can be used |
+independently of any object. To do so, you need only specify the name of their class followed
+bythe dot operator,
+‘For example, if you wish to call a statie method from outside its class, you eando so using the
+following general form: elaysname.method()
++ Here, classname is the name of the class in which the statie method is declared, A static
+variable can be accessed in the same way—by use of the dot operator on the name of the
+class, This is how Java implements a controlled version of global methods and global
+variables, Here is an example, Inside main( ), the static method eallme( ) and the static z
+variable b are accessed through their class name StatieDemo. i
+class StatieDemo { ‘:
+_ static int a= 425 k
+static int b= 995 8
+tatic void callme() { ;
+System.out.printin("a = "+ a);
+}
+}
+class StaticByName { a
+* public static void main(String arest)) {
+StatieDemo.callme();
+System.out.printin("b =" + StatieDemo.b);
+)
+)
+Here is the output of this program: : : ;
+as42 .
+b=99
+> Introducing final
+Dept of ISE, RNSIT Page 37
+
+
+===== PAGE 38 =====
+
+4 ee
+aes
+; hesso6q
++ A variable can be declared as final. Doing so prevents its contents from being modlitied, eF
+‘Thismeans that you must initialize « final variable when itis declared. i
+‘+ For example: \
+final int FILE_NEW = 1; \
+final int FILE_OPEN = 2;
+final int FILE_SAVE = 3;
+final int FILE_SAVEAS = 4;
+final int FILE_QUIT = 5;
+* Subsequent parts of your program can now use FILE_OPEN, ele, as if they were constants,
+without fear thata value has been changed.
++ It is a common coding convention to choose all uppercase identifiers for final variables.
+Variables declared as final do not occupy memory on a per-instance basis. ‘Thus, a final
+variable is essentially a constant.
+* The keyword final can also be applied to methods, but its meaning is substantially different
+than when it is applied to variables,
+> Arrays Revisited
+~~ 1 This program demonstrates the length array member.
+class Length} == ae
+public static void main(String argsf]) {
+int al] = new ini{10}; :
+int a2{] = (3, 5, 7, 1, 8,99, 44, -10);
+i a3(] = £4, 3,2, 1)s
+System.out println("length of al is " + al length);
+System.out.printhn("length of a2 is" + a2.length); .
+‘System.out.printIn("length of a3 is" + a3.length);
+}
+}
+This program displays the following output:
+length of al is 10
+a length of a2 is 8 S :
+length of a3 is 4
++ The size of each array is displayed. Keep in mind that the value of length has nothing to do
+= $n
+
+
+===== PAGE 39 =====
+
+Leak pect ORENTED PROGRAMMING WITH JAVA,
+evens ag BCS306A
+pa with the number of elements th i
+ee at are in use. It only reflects the number of
+ae array is designed to hold. yer of elements that the
+INTRODUCING NESTEAD AND INNER CLASSES.
+° Javai is ‘
+inner class or nested class is a class that is declared inside the class or interface.
+«We use inner classes to logically group classes and interfaces in one place to Be more
+readable and maintainable.
+Additionally, it can access all the members ofthe outer class, including Private data members
+and methods.
+‘Syntax of Inner class
+class Java_Outer_class(
+Meode
+class Java_Inner_class{
+Iieode
+ee _
+3
+“Advantage of Java inner classes
+«There are three advantages of ier classes in Java. ‘They a6 3 follows:
+«Nested classes represent a particular type of relationship that is it ean access all the members
+(data members and methods) of the outer class, including private. =
+‘e Nested classes are used to develop more readable and maintainable code because it logically
+group classes and interfaces in one place only-
+© Code Optimization: It requires less code to write.
+Need of Java Inner class
+«Definition: Inner classes are a type of nested class that is non-static and defined within the
+scope of an instance of the outer class.
+Dept of ISE, RNSIT Page 39
+
+
+===== PAGE 40 =====
+
+\
+'
+BCS306A \
+OBJECT ORIENTED PROGRAMM ING WITH JAVA
+Types:
+* Member Inner Class: Defined at the member level of a class but not inside a method.
++ Local Inner Class: Defined inside a method.
+‘* Anonymous Inner Class: A class without a name, often used for one-time use.
+* Static Nested Class: Similar to inner classes but marked as static.
+| * The difference between nested class and inner class is: An inner class is a part of a nested
+class. Non-static nested classes are known as inner classes.
+Public class OuterClass {
+: Private int outerField;
+:
+1 public class InnerClass {
+Private int innerField;
+ee
+public void innerMethod() {
+4 Access outer class members
+‘OuterFicld = 10;
+o)
+: }
+}
+Dept of ISE, RNSIT Page 40
