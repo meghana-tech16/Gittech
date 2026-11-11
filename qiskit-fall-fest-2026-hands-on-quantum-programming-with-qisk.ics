@@ -1,0 +1,44 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Jamao//Events//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:qiskit-fall-fest-2026-hands-on-quantum-programming-with-qisk@jamao.in
+SEQUENCE:0
+DTSTAMP:20261106T122319Z
+DTSTART:20261116T043000Z
+DTEND:20261116T083000Z
+SUMMARY:QFF 2026: Hands-On Quantum Programming with Qiskit
+DESCRIPTION:Get started with quantum programming through a practical\, be
+ ginner-friendly workshop using Qiskit and IBM Quantum Platform. This eve
+ nt is exclusively for students and is open to participants from all acad
+ emic institutions. About the Event Ready to move beyond theory and start
+  building with quantum computers? Join the QuantumX Qiskit Workshop\, a 
+ hands-on session designed to introduce you to the world's most widely us
+ ed quantum computing SDK. Through guided demonstrations and practical ex
+ ercises\, you'll learn how to create and execute quantum circuits using 
+ Qiskit and explore the IBM Quantum Platform. Whether you're a student\, 
+ researcher\, or working professional\, this workshop will help you take 
+ your first steps into quantum programming with confidence. What You'll L
+ earn ✅ Introduction to t…\n\nhttps://jamao.in/e/qiskit-fall-fest-2026-ha
+ nds-on-quantum-programming-with-qisk
+LOCATION:HKBK COLLEGE OF ENGINEERING\, HKBK COLLEGE OF ENGINEERING\, Beng
+ aluru\, Karnataka\, Bengaluru
+URL:https://jamao.in/e/qiskit-fall-fest-2026-hands-on-quantum-programming
+ -with-qisk
+STATUS:CONFIRMED
+ORGANIZER;CN=Jamao Curator:mailto:curator@jamao.in
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT24H
+DESCRIPTION:Tomorrow: QFF 2026: Hands-On Quantum Programming with Qiskit
+END:VALARM
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT2H
+DESCRIPTION:Starting in 2 hours: QFF 2026: Hands-On Quantum Programming w
+ ith Qiskit
+END:VALARM
+END:VEVENT
+END:VCALENDAR
